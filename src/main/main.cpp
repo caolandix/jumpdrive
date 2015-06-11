@@ -7,7 +7,6 @@
 
 #include "../jumpdrive/commondefs.h"
 #include "../jumpdrive/jumpdrivedefs.h"
-#include "CTeslaApp.h"
 
 int main(int argc, char **argv) {
 	while (1) {
