@@ -25,5 +25,6 @@
 #include "Tokenizer.h"
 #include "UnparsableExpressionException.h"
 #include "VariableToken.h"
+#include "ValueSet.h"
 
 #endif /* JUMPDRIVEDEFS_H_ */

@@ -14,8 +14,6 @@ using namespace std;
 
 class ArithmeticException: public boost::exception {
 public:
-	//ArithmeticException() {};
-	//virtual ~ArithmeticException() {};
 
 	ArithmeticException(string message) {
 		cout << message <<  endl;

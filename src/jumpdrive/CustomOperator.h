@@ -2,7 +2,7 @@
  * CustomOperator.h
  *
  *  Created on: Jun 13, 2014
- *      Author: johndi
+ *      Author: caolan
  */
 
 #ifndef CUSTOMOPERATOR_H_

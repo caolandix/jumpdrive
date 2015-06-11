@@ -13,5 +13,4 @@
 
 using namespace std;
 
-
 #endif /* COMMONDEF_H_ */

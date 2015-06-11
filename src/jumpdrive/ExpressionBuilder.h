@@ -28,6 +28,7 @@ public:
 	virtual ~ExpressionBuilder();
 
 	RPNExpression build();
+	ValueSet calculate();
 	void withCustomFunctions(const vector<CustomFunction *> &functions);
 	void withVariableNames(const vector<string> &variableNames);
 	void withVariables(const map<string, double> &variableMap);
@@ -47,6 +48,7 @@ private:
 	map<string, CustomFunction *> m_customFunctions;
 	map<string, CustomOperator *> m_builtInOperators;
 	map<string, CustomOperator *> m_customOperators;
+	ValueSet m_eq_vals;
 	list<char> m_validOperatorSymbols;
 	bool m_highUnaryPrecedence;
 	string m_expression;

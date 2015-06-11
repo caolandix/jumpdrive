@@ -14,12 +14,11 @@ RPNExpression::RPNExpression(const list<Token*> &tokens, const string &expressio
 	m_variables = variables;
 }
 
-double RPNExpression::calculate(const vector<double> values) {
+ValueSet RPNExpression::calculate(const ValueSet values) {
 	if (m_variables.size() == 0 && values.size() > 0)
 		throw new IllegalArgumentException("there are no variables to set values");
 	else if (values.size() != m_variables.size())
 		throw new IllegalArgumentException("The are an unequal number of variables and arguments");
-
 
 	if (m_variables.size() > 0 && !values.empty()) {
 		vector<double>::const_iterator valueIter = values.begin();
@@ -46,12 +45,12 @@ double RPNExpression::calculate(const vector<double> values) {
 				break;
 		}
 	}
-	double val = 0.0;
+	vector<double> eq_values;
 	if (m_valstack.size() > 0) {
-		val = m_valstack.top();
+		eq_values.push_back(m_valstack.top());
 		m_valstack.pop();
 	}
-	return val;
+	return eq_values;
 }
 
 void RPNExpression::print(const string header) {

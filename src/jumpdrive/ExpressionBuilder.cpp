@@ -55,10 +55,22 @@ ExpressionBuilder::ExpressionBuilder() {
 // Notes:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-ExpressionBuilder::ExpressionBuilder(string expression) {
+ExpressionBuilder::ExpressionBuilder(string strEquation) {
 	string var;
 
-	expression = ::trim(expression);
+	vector<string> fields;
+	split(fields, strEquation, is_any_of(","));
+	for (vector<string>::iterator iter = fields.begin() + 1; iter != fields.end(); iter++) {
+		double val = 0.0;
+		vector<string> tmp;
+
+		// Split the variable from it's value
+		split(tmp, ::trim(*iter), is_any_of("="));
+		this -> withVariable(::trim(tmp[0]), val = atof(::trim(tmp[1]).c_str()));
+		m_eq_vals.push_back(val);
+	}
+
+	string expression = ::trim(fields[0]);
 	if (expression.length() == 0)
 		throw new IllegalArgumentException("Expression can not be empty!.");
 	m_expression = expression;
@@ -69,6 +81,10 @@ ExpressionBuilder::ExpressionBuilder(string expression) {
 	getBuiltinFunctions();
 	getBuiltinOperators();
 	getValidOperators();
+}
+
+ValueSet ExpressionBuilder::calculate() {
+	return build().calculate(m_eq_vals);
 }
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

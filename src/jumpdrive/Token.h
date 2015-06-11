@@ -12,7 +12,7 @@
 
 class Token {
 	public:
-		typedef enum { TT_NONE, TT_CALC, TT_FUNCTION, TT_FUNCTION_SEP, TT_NUMBER, TT_OPERATOR, TT_PAREN, TT_VARIABLE } TokenType;
+		typedef enum { TT_NONE, TT_CALC, TT_FUNCTION, TT_FUNCTION_SEP, TT_NUMBER, TT_OPERATOR, TT_PAREN, TT_VARIABLE, TT_RANGE } TokenType;
 
 		Token() : m_tt(TT_NONE) {};
 		Token(TokenType tt) : m_tt(tt) {};
@@ -29,7 +29,5 @@ class Token {
 		string m_value;
 		TokenType m_tt;
 };
-
-
 
 #endif /* TOKEN_H_ */

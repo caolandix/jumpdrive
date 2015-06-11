@@ -9,8 +9,9 @@
 #define RPNEXPRESSION_H_
 
 #include "commondefs.h"
-#include "Calculable.h"
+#include "jumpdrivedefs.h"
 #include "Token.h"
+#include "ValueSet.h"
 
 class RPNExpression : public Calculable {
 public:
@@ -18,7 +19,7 @@ public:
 	RPNExpression(const list<Token *> &tokens, const string &expression, const map<string, double> &variables);
 	virtual ~RPNExpression() {};
 
-	double calculate(const vector<double> values);
+	ValueSet calculate(const ValueSet values);
 	string getExpression() const { return m_expression; };
 	void setVariable(string name, double value) { m_variables.insert(pair<string, double>(name, value)); };
 	void print(const string);

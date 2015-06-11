@@ -29,12 +29,14 @@
 #include <boost/multi_index/ordered_index.hpp>
 #include <boost/multi_index/mem_fun.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/algorithm/string.hpp>
 
 #include "IllegalArgumentException.h"
 #include "InvalidCustomFunctionException.h"
 #include "ArithmeticException.h"
 
 using namespace std;
+using namespace boost;
 using namespace boost::multi_index;
 
 using boost::multi_index_container;

@@ -11,7 +11,6 @@
 #include "commondefs.h"
 #include "Token.h"
 #include "CustomOperator.h"
-// #include "CalculationToken.h"
 
 class OperatorToken : public Token {
 public:
@@ -29,24 +28,7 @@ public:
 private:
 	bool isLeftAssociative() const { return m_poperation -> leftassociative(); };
 	int getPrecedence() const {	return m_poperation -> precedence(); };
-
 	CustomOperator *m_poperation;
 };
 
-/*
-class OperatorToken extends CalculationToken {
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof OperatorToken) {
-			final OperatorToken t = (OperatorToken) obj;
-			return t.getValue().equals(this.getValue());
-		}
-		return false;
-	}
-
-}
-
-*/
 #endif /* OPERATORTOKEN_H_ */
