@@ -1,0 +1,49 @@
+# Basic github actions build file.
+name: C++ Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    # Use a matrix strategy to build on different operating systems
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      # Uses the actions/checkout@v3 action to download your repository
+      uses: actions/checkout@v3
+
+    - name: Install C++ tools (optional but helpful)
+      # Uses a community action to install necessary build tools
+      uses: aminya/setup-cpp@v1
+
+    - name: Create Build Directory
+      run: cmake -E make_directory ${{runner.workspace}}/build
+
+    - name: Configure CMake Project
+      shell: bash
+      # Configures the project using CMake
+      run: |
+        cd ${{runner.workspace}}/build
+        cmake ${{runner.workspace}} -DCMAKE_BUILD_TYPE=Release
+        
+    - name: Build Project
+      shell: bash
+      # Builds the project
+      run: cmake --build ${{runner.workspace}}/build --config Release
+      
+    # Add steps here to run tests or upload artifacts (executables, libraries, etc.)
+    # Example:
+    # - name: Run tests
+    #   run: |
+    #     cd ${{runner.workspace}}/build
+    #     ./your_test_executable # Replace with your actual test executable name
