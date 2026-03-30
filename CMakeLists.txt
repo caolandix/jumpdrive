@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.14)
 
 # Define the project name and optionally a version
 project(Jumpdrive VERSION 1.0) #
-
 set(BOOST_VERSION 1.90.0)
+
+include(FetchContent)
 FetchContent_Declare(
   boost
   GIT_REPOSITORY https://github.com
