@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 4.3.1)
 
 # Define the project name and optionally a version
 project(Jumpdrive VERSION 1.0) #
@@ -26,12 +26,11 @@ file(GLOB HEADER_FILES "*.h")
 add_library(Jumpdrive STATIC ${SOURCE_FILES} ${HEADER_FILES}) #
 target_link_libraries(
   Jumpdrive PRIVATE 
-  Boost::boost
-  Boost::system 
   Boost::filesystem 
-  Boost::multi_index 
-  Boost::lexical_cast
   Boost::headers      # used for header only libraries.
+  Boost::lexical_cast
+  Boost::multi_index 
+  Boost::system 
 )
 # Specify include directories for the library target
 # The 'PUBLIC' keyword means both the library itself and consumers of the library need this include path
