@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.3.1)
+cmake_minimum_required(VERSION 3.31.6)
 
 # Define the project name and optionally a version
 project(Jumpdrive VERSION 1.0) #
