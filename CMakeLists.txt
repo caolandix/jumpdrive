@@ -13,6 +13,7 @@ FetchContent_Declare(
   SOURCE_DIR     ${CMAKE_BINARY_DIR}/_deps/boost-src
 )
 FetchContent_MakeAvailable(boost)
+find_package(Boost REQUIRED CONFIG)
 
 # Specify the C++ standard to use
 set(CMAKE_CXX_STANDARD 23) #
@@ -32,7 +33,7 @@ target_link_libraries(
   Boost::multi_index 
   Boost::system 
 )
-find_package(Boost REQUIRED)
+
 include_directories(${Boost_INCLUDE_DIRS})
 # Specify include directories for the library target
 # The 'PUBLIC' keyword means both the library itself and consumers of the library need this include path
