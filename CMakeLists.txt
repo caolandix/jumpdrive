@@ -7,7 +7,7 @@ set(BOOST_VERSION 1.90.0)
 include(FetchContent)
 FetchContent_Declare(
   boost
-  GIT_REPOSITORY https://github.com/boostorg/
+  GIT_REPOSITORY https://github.com/boostorg/boost
   GIT_TAG        boost-${BOOST_VERSION}
   # Use the specific CMake support infrastructure from boostorg/cmake repo for better integration
   SOURCE_DIR     ${CMAKE_BINARY_DIR}/_deps/boost-src
