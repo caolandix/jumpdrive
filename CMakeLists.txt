@@ -18,14 +18,14 @@ FetchContent_MakeAvailable(boost)
 set(CMAKE_CXX_STANDARD 23) #
 set(CMAKE_CXX_STANDARD_REQUIRED True) #
 
+file(GLOB SOURCE_FILES "*.cpp")
+file(GLOB HEADER_FILES "*.h")
+
 # Add a library target, specifying its name and source files
 # STATIC or SHARED can be explicitly set, or omitted to let CMake decide based on BUILD_SHARED_LIBS
 find_package(Boost REQUIRED COMPONENTS system filesystem) # Add components you need
 target_link_libraries(Jumpdrive PRIVATE Boost::system Boost::filesystem)
 add_library(Jumpdrive STATIC ${SOURCE_FILES} ${HEADER_FILES}) #
-
-file(GLOB SOURCE_FILES "*.cpp")
-file(GLOB HEADER_FILES "*.h")
 
 # Specify include directories for the library target
 # The 'PUBLIC' keyword means both the library itself and consumers of the library need this include path
