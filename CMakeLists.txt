@@ -32,6 +32,8 @@ target_link_libraries(
   Boost::multi_index 
   Boost::system 
 )
+find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
 # Specify include directories for the library target
 # The 'PUBLIC' keyword means both the library itself and consumers of the library need this include path
 target_include_directories(Jumpdrive PUBLIC 
