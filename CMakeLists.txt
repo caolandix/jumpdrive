@@ -23,7 +23,6 @@ file(GLOB HEADER_FILES "*.h")
 
 # Add a library target, specifying its name and source files
 # STATIC or SHARED can be explicitly set, or omitted to let CMake decide based on BUILD_SHARED_LIBS
-find_package(Boost REQUIRED COMPONENTS system filesystem) # Add components you need
 target_link_libraries(Jumpdrive PRIVATE Boost::system Boost::filesystem)
 add_library(Jumpdrive STATIC ${SOURCE_FILES} ${HEADER_FILES}) #
 
