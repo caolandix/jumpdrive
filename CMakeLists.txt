@@ -24,7 +24,7 @@ file(GLOB HEADER_FILES "*.h")
 # Add a library target, specifying its name and source files
 # STATIC or SHARED can be explicitly set, or omitted to let CMake decide based on BUILD_SHARED_LIBS
 add_library(Jumpdrive STATIC ${SOURCE_FILES} ${HEADER_FILES}) #
-target_link_libraries(Jumpdrive PRIVATE Boost::system Boost::filesystem Boost::multi_index)
+target_link_libraries(Jumpdrive PRIVATE Boost::system Boost::filesystem Boost::multi_index Boost::lexical_cast)
 # Specify include directories for the library target
 # The 'PUBLIC' keyword means both the library itself and consumers of the library need this include path
 target_include_directories(Jumpdrive PUBLIC 
