@@ -30,7 +30,7 @@ target_link_libraries(
   Boost::filesystem 
   Boost::multi_index 
   Boost::lexical_cast
-  Boost::Algorithm
+  Boost::headers
 )
 # Specify include directories for the library target
 # The 'PUBLIC' keyword means both the library itself and consumers of the library need this include path
