@@ -19,8 +19,8 @@ FetchContent_MakeAvailable(boost)
 set(CMAKE_CXX_STANDARD 23) #
 set(CMAKE_CXX_STANDARD_REQUIRED True) #
 
-file(GLOB SOURCE_FILES "*.cpp")
-file(GLOB HEADER_FILES "*.h")
+# file(GLOB SOURCE_FILES "*.cpp")
+# file(GLOB HEADER_FILES "*.h")
 
 # Add a library target, specifying its name and source files
 # STATIC or SHARED can be explicitly set, or omitted to let CMake decide based on BUILD_SHARED_LIBS
