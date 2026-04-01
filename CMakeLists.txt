@@ -10,15 +10,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED True) #
 # Setup Boost library
 set(BOOST_VERSION 1.90.0)
 find_package(Boost REQUIRED)
-target_link_libraries(
-  Jumpdrive PRIVATE Boost::boost
-)
 include_directories(${Boost_INCLUDE_DIRS})
 
 # Jumpdrive specific files and build actions
 file(GLOB SOURCE_FILES "*.cpp")
 file(GLOB HEADER_FILES "*.h")
 add_library(Jumpdrive STATIC ${SOURCE_FILES} ${HEADER_FILES}) #
+target_link_libraries(
+  Jumpdrive PRIVATE Boost::boost
+)
 
 # Set the directory for this specific target
 set_target_properties(Jumpdrive PROPERTIES
