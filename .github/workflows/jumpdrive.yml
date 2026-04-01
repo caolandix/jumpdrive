@@ -8,13 +8,22 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
     - name: Install Boost
       run: sudo apt-get update && sudo apt-get install -y libboost-all-dev
     - uses: actions/checkout@v4
-    - name: Configure CMake
-      run: cmake -B ${{github.workspace}}
-    - name: Build
-      run: cmake --build ${{github.workspace}}
+    - name: Configure and Build
+      run: |
+        cmake -B ${{github.workspace}}
+        cmake --build ${{github.workspace}}
+    - name:  Commit and Push
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        mkdir -p bin/
+        cp build/*.a bin/ || cp build/*.so bin/ || cp build/Release/*.lib bin/
+        git add bin/
+        git commit -m "Automated build: update library binaries"
+        git push
+      
