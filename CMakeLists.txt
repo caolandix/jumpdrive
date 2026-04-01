@@ -4,15 +4,15 @@ cmake_minimum_required(VERSION 3.31.6)
 project(Jumpdrive VERSION 1.0) #
 set(BOOST_VERSION 1.90.0)
 
-include(FetchContent)
-FetchContent_Declare(
-  boost
-  GIT_REPOSITORY https://github.com/boostorg/boost
-  GIT_TAG        boost-${BOOST_VERSION}
+# include(FetchContent)
+# FetchContent_Declare(
+#   boost
+#   GIT_REPOSITORY https://github.com/boostorg/boost
+#   GIT_TAG        boost-${BOOST_VERSION}
   # Use the specific CMake support infrastructure from boostorg/cmake repo for better integration
-  SOURCE_DIR     ${CMAKE_BINARY_DIR}/_deps/boost-src
-)
-FetchContent_MakeAvailable(boost)
+#   SOURCE_DIR     ${CMAKE_BINARY_DIR}/_deps/boost-src
+# )
+# FetchContent_MakeAvailable(boost)
 find_package(Boost REQUIRED CONFIG)
 
 # Specify the C++ standard to use
