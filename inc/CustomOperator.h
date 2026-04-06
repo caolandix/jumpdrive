@@ -21,10 +21,10 @@ public:
 	const bool leftassociative() const { return m_leftAssociative; };
 	virtual double applyOperation(double values[]) = 0;
 private:
-	string m_symbol;
-	int m_operandCount;
-	int m_precedence;
-	bool m_leftAssociative;
+	string m_symbol = "";
+	int m_operandCount = 0;
+	int m_precedence = 0;
+	bool m_leftAssociative = true;
 protected:
 	CustomOperator(const string symbol, const bool leftAssociative, const int precedence);
 	CustomOperator(const string symbol, const bool leftAssociative, const int precedence, const int operandCount);
