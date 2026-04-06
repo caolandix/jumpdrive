@@ -14,7 +14,7 @@
 
 class FunctionToken : public Token {
 public:
-	FunctionToken() : m_pfunction(NULL), Token(Token::TT_FUNCTION) {};
+	FunctionToken() : m_pfunction(nullptr), Token(Token::TT_FUNCTION) {};
 	FunctionToken(string, CustomFunction *);
 	virtual ~FunctionToken() {};
 
@@ -26,7 +26,7 @@ public:
 	virtual void mutateStackForCalculation(stack<double> &stack, const map<string, double> &variableValues);
 private:
 	string m_functionName;
-	CustomFunction *m_pfunction;
+	CustomFunction *m_pfunction = nullptr;
 };
 
 
