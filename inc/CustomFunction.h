@@ -9,10 +9,11 @@
 #define CUSTOMFUNCTION_H_
 
 #include "commondefs.h"
+#include <numbers>
 
 class CustomFunction {
 public:
-	CustomFunction() : m_PI(3.1415926), m_argc(0) {};
+	CustomFunction() : m_PI(numbers::pi), m_argc(0) {};
 	virtual ~CustomFunction() {};
 
 
@@ -26,7 +27,7 @@ private:
 	// COnvert degrees to radians -- trigonometric functions in the C++ library does everything in radians but inputs are in degrees so need to convert to make sure that
 	// we get the proper values returned.
 protected:
-	CustomFunction(const string name, const int argumentCount = 1) : m_PI(3.1415926) {
+	CustomFunction(const string name, const int argumentCount = 1) : m_PI(numbers::pi) {
 		m_argc = argumentCount;
 		m_name = name;
 	}
