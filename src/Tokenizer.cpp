@@ -59,7 +59,7 @@ list<Token*> Tokenizer::getTokens(string expression) {
 #endif
 
 	// iterate over the chars and fork on different types of input
-	Token *plastToken = NULL;
+	Token *plastToken = nullptr;
 	for (uint i = 0; i < expression.length(); i++) {
 		char c = expression[i];
 		if (c == ' ')
