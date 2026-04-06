@@ -13,8 +13,8 @@ find_package(Boost REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
 # Jumpdrive specific files and build actions
-file(GLOB SOURCE_FILES "*.cpp")
-file(GLOB HEADER_FILES "*.h")
+file(GLOB SOURCE_FILES "./src/*.cpp")
+file(GLOB HEADER_FILES "./inc/*.h")
 add_library(Jumpdrive STATIC ${SOURCE_FILES} ${HEADER_FILES}) #
 target_link_libraries(
   Jumpdrive PRIVATE Boost::boost
