@@ -24,7 +24,7 @@ public:
 	};
 
 	void mutateStackForCalculation(stack<double> &valstack, map<string, double> variableValues) {
-		map<string, double>::iterator iter = variableValues.find(getValue());
+		auto iter = variableValues.find(getValue());
 		if (iter != variableValues.end())
 			valstack.push((*iter).second);
 	}
