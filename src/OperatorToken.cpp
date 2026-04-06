@@ -48,7 +48,7 @@ void OperatorToken::mutateStackForCalculation(stack<double> &valstack, const map
 */
 
 void OperatorToken::mutateStackForInfixTranslation(stack<Token*> &operatorStack, string &output) {
-	Token *pbefore = NULL;
+	Token *pbefore = nullptr;
 	while (!(operatorStack.empty())) {
 		pbefore = operatorStack.top();
 		if (pbefore -> tokenType() == TokenType::TT_OPERATOR || pbefore -> tokenType() == TokenType::TT_FUNCTION) {
