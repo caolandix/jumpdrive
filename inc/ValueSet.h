@@ -26,7 +26,7 @@ public:
 	// Friend methods
 	friend ostream &operator<<(ostream &, ValueSet const &);
 private:
-	vector<double> *m_presultSet;
+	vector<double> *m_presultSet = nullptr;
 };
 
 #endif /* VALUESET_H_ */
