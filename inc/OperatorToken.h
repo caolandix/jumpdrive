@@ -14,7 +14,7 @@
 
 class OperatorToken : public Token {
 public:
-	OperatorToken() : m_poperation(NULL), Token(Token::TT_OPERATOR) {};
+	OperatorToken() : m_poperation(nullptr), Token(Token::TT_OPERATOR) {};
 	OperatorToken(const string &value, CustomOperator *poperation) : Token(Token::TT_OPERATOR, value) { m_poperation = poperation; };
 	virtual ~OperatorToken() {};
 
@@ -28,7 +28,7 @@ public:
 private:
 	bool isLeftAssociative() const { return m_poperation -> leftassociative(); };
 	int getPrecedence() const {	return m_poperation -> precedence(); };
-	CustomOperator *m_poperation;
+	CustomOperator *m_poperation = nullptr;
 };
 
 #endif /* OPERATORTOKEN_H_ */
