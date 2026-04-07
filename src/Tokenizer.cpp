@@ -30,7 +30,7 @@ bool Tokenizer::charInTokenSet(const char c, const string tokenset) const {
 
 bool Tokenizer::isVariable(const string name) const {
 	if (!m_variableNames.empty()) {
-		for (vector<string>::const_iterator iter = m_variableNames.begin(); iter != m_variableNames.end(); iter++) {
+		for (auto iter = m_variableNames.begin(); iter != m_variableNames.end(); iter++) {
 			string str = *iter;
 			if (!name.compare(*iter))
 				return true;
@@ -40,7 +40,7 @@ bool Tokenizer::isVariable(const string name) const {
 }
 
 bool Tokenizer::isOperatorCharacter(const char c) const {
-	for (map<string, CustomOperator *>::const_iterator iter = m_operators.begin(); iter != m_operators.end(); iter++) {
+	for (auto iter = m_operators.begin(); iter != m_operators.end(); iter++) {
 		string symbol = (*iter).first;
 		if (symbol.find_first_of(c) != string::npos)
 			return true;
@@ -112,7 +112,7 @@ list<Token*> Tokenizer::getTokens(string expression) {
 			else if (isFunction(name)) {
 				// might be a function
 				i += offset - 1;
-				map<string, CustomFunction *>::const_iterator iter = m_functions.find(name);
+				auto iter = m_functions.find(name);
 				if (iter != m_functions.end())
 					tokens.push_back(new FunctionToken(name, (*iter).second));
 			}
@@ -133,7 +133,7 @@ list<Token*> Tokenizer::getTokens(string expression) {
 				offset++;
 			}
 			string symbol = symbolBuilder;
-			map<string, CustomOperator *>::const_iterator iter = m_operators.find(symbol);
+			auto iter = m_operators.find(symbol);
 			if (iter != m_operators.end()) {
 				i += offset - 1;
 				tokens.push_back(new OperatorToken(symbol, (*iter).second));
@@ -188,7 +188,7 @@ void Tokenizer::print_tokens(const string str, list<Token*> token_list) {
 #ifdef _DEBUG
 	cout << str << endl;
 	cout << "Token List:" << endl;
-	for (list<Token*>::iterator iter = token_list.begin(); iter != token_list.end(); iter++) {
+	for (auto iter = token_list.begin(); iter != token_list.end(); iter++) {
 		if ((*iter) -> getTokenChar() == '(' || (*iter) -> getTokenChar() == ')')
 			int i = 0;
 		cout << "TokenValue: " << (*iter) -> getTokenChar() << endl;
@@ -197,12 +197,12 @@ void Tokenizer::print_tokens(const string str, list<Token*> token_list) {
 }
 
 bool Tokenizer::isFunction(const string name) const {
-	map<string, CustomFunction *>::const_iterator iter = m_functions.find(name);
+	auto iter = m_functions.find(name);
 	return (iter != m_functions.end()) ? true : false;
 }
 
 bool Tokenizer::isOperatorStart(const string op) const {
-	for (map<string, CustomOperator *>::const_iterator iter = m_operators.begin(); iter != m_operators.end(); iter++) {
+	for (auto iter = m_operators.begin(); iter != m_operators.end(); iter++) {
 		if ((*iter).first.find(op) == 0)
 			return true;
 	}
