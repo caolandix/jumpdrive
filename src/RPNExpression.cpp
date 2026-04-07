@@ -21,8 +21,8 @@ ValueSet RPNExpression::calculate(const ValueSet values) {
 		throw new IllegalArgumentException("The are an unequal number of variables and arguments");
 
 	if (m_variables.size() > 0 && !values.empty()) {
-		vector<double>::const_iterator valueIter = values.begin();
-		for (map<string, double>::iterator entryIter = m_variables.begin(); entryIter != m_variables.end() && valueIter != values.end(); ++valueIter, ++entryIter) {
+		auto valueIter = values.begin();
+		for (auto entryIter = m_variables.begin(); entryIter != m_variables.end() && valueIter != values.end(); ++valueIter, ++entryIter) {
 			pair<string, double> entry = *entryIter;
 			entry.second = *valueIter;
 		}
@@ -58,10 +58,10 @@ void RPNExpression::print(const string header) {
 	cout << header << endl;
 	cout << "Expression: " << m_expression << endl;
 	cout << "List of tokens:" << endl;
-	for (list<Token *>::iterator iter = m_tokens.begin(); iter != m_tokens.end(); iter++)
+	for (auto iter = m_tokens.begin(); iter != m_tokens.end(); iter++)
 		cout << "\tTokenValue: " << (*iter) -> getTokenChar() << endl;
 	cout << "List of variables:" << endl;
-	for (map<string, double>::iterator iter = m_variables.begin(); iter != m_variables.end(); iter++) {
+	for (auto iter = m_variables.begin(); iter != m_variables.end(); iter++) {
 		cout << "\tVariable: " << iter -> first << endl;
 		cout << "\tValue: " << iter -> second << endl;
 	}
