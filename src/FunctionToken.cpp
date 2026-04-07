@@ -20,7 +20,7 @@ void FunctionToken::mutateStackForCalculation(stack<double> &valstack, const map
 	}
 	double rev_args[args.size()];
 	int i = 0;
-	for (vector<double>::reverse_iterator iter = args.rbegin(); iter != args.rend(); iter++, i++)
+	for (auto iter = args.rbegin(); iter != args.rend(); iter++, i++)
 		rev_args[i] = *iter;
 	valstack.push(m_pfunction -> applyFunction(rev_args));
 }
