@@ -63,12 +63,12 @@ RPNExpression RPNConverter::toRPNExpression(const string infix, map<string, doub
 
 	cout << "RPNConverter::toRPNExpression(), infix string passed in: " << infix << endl;
 
-	for (map<string, double>::iterator iter = variables.begin(); iter != variables.end(); iter++)
+	for (auto iter = variables.begin(); iter != variables.end(); iter++)
 		variableKeySet.push_back((*iter).first);
 	Tokenizer tokenizer(variableKeySet, customFunctions, operators);
 	list<Token*> tokens = tokenizer.getTokens(substituteUnaryOperators(infix, operators));
 	validateRPNExpression(tokens, operators);
-	for (list<Token*>::iterator iter = tokens.begin(); iter != tokens.end(); iter++) {
+	for (auto iter = tokens.begin(); iter != tokens.end(); iter++) {
 		switch ((*iter) -> tokenType()) {
 			case Token::TT_NUMBER: {
 				NumberToken *ptok = (NumberToken *)(*iter);
@@ -111,11 +111,11 @@ RPNExpression RPNConverter::toRPNExpression(const string infix, map<string, doub
 }
 
 void RPNConverter::validateRPNExpression(list<Token*> &tokens, map<string, CustomOperator *> &operators) {
-	list<Token*>::iterator iter = tokens.begin();
-	list<Token*>::iterator prevIter = tokens.begin();
+	auto iter = tokens.begin();
+	auto prevIter = tokens.begin();
 	vector<Token*> vecTokens;
 
-	for (list<Token*>::iterator iter = tokens.begin(); iter != tokens.end(); iter++)
+	for (auto iter = tokens.begin(); iter != tokens.end(); iter++)
 		vecTokens.push_back(*iter);
 	for (int i = 1; i < vecTokens.size(); i++) {
 		if (vecTokens[i - 1] -> tokenType() == Token::TT_NUMBER) {
@@ -129,7 +129,7 @@ void RPNConverter::validateRPNExpression(list<Token*> &tokens, map<string, Custo
 }
 
 bool RPNConverter::isOperatorCharacter(const char c, map<string, CustomOperator *> &operators) {
-	for (map<string, CustomOperator *>::iterator iter = operators.begin(); iter != operators.end(); iter++) {
+	for (auto iter = operators.begin(); iter != operators.end(); iter++) {
 		string symbol = (*iter).first;
 		if (symbol.find_first_of(c) != string::npos)
 			return true;
