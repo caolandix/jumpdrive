@@ -60,7 +60,7 @@ ExpressionBuilder::ExpressionBuilder(string strEquation) {
 	vector<string> fields;
 
 	split(fields, strEquation, is_any_of(","));
-	for (vector<string>::iterator iter = fields.begin() + 1; iter != fields.end(); iter++) {
+	for (auto iter = fields.begin() + 1; iter != fields.end(); iter++) {
 		double val = 0.0;
 		vector<string> tmp;
 
@@ -185,7 +185,7 @@ RPNExpression ExpressionBuilder::build() {
 	for (map<string, CustomOperator *>::iterator iter = m_customOperators.begin(); iter != m_customOperators.end(); ++iter) {
 		CustomOperator *pop = (*iter).second;
 		for (int i = 0; i < (int)(pop -> symbol().length()); i++) {
-			list<char>::iterator iter = find(m_validOperatorSymbols.begin(), m_validOperatorSymbols.end(), pop -> symbol()[i]);
+			auto iter = find(m_validOperatorSymbols.begin(), m_validOperatorSymbols.end(), pop -> symbol()[i]);
 			if (iter == m_validOperatorSymbols.end())
 				throw new UnparsableExpressionException("" + pop -> symbol() + " is not a valid symbol for an operator please choose from: !,#,§,$,&,;,:,~,<,>,|,=");
 		}
@@ -229,7 +229,7 @@ void ExpressionBuilder::checkVariableName(const string varName) const {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 void ExpressionBuilder::withCustomFunctions(const vector<CustomFunction *> &functions) {
-	for (vector<CustomFunction *>::const_iterator iter = functions.begin(); iter != functions.end(); iter++)
+	for (auto iter = functions.begin(); iter != functions.end(); iter++)
 		withCustomFunction(*iter);
 }
 //
@@ -242,7 +242,7 @@ void ExpressionBuilder::withCustomFunctions(const vector<CustomFunction *> &func
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 void ExpressionBuilder::withVariableNames(const vector<string> &variableNames) {
-	for (vector<string>::const_iterator iter = variableNames.begin(); iter != variableNames.end(); iter++)
+	for (auto iter = variableNames.begin(); iter != variableNames.end(); iter++)
 		m_variables.insert(pair<string, double>(*iter, NULL));
 }
 //
@@ -255,7 +255,7 @@ void ExpressionBuilder::withVariableNames(const vector<string> &variableNames) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 void ExpressionBuilder::withVariables(const map<string, double> &variableMap) {
-	for (map<string, double>::const_iterator iter = variableMap.begin(); iter != variableMap.end(); iter++) {
+	for (auto iter = variableMap.begin(); iter != variableMap.end(); iter++) {
 		pair<string, double> obj((*iter).first, (*iter).second);
 		m_variables.insert(obj);
 	}
@@ -271,6 +271,6 @@ void ExpressionBuilder::withVariables(const map<string, double> &variableMap) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 void ExpressionBuilder::withOperations(vector<CustomOperator *> &operations) {
-	for (vector<CustomOperator *>::const_iterator iter = operations.begin(); iter != operations.end(); iter++)
+	for (auto iter = operations.begin(); iter != operations.end(); iter++)
 		withOperation(*iter);
 }
