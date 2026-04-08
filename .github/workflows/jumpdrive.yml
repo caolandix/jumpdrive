@@ -24,6 +24,8 @@ jobs:
           "commit": "${{ github.sha }}",
           "build_time": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
         }' > ./build_version.json
+        git config --global user.name "caolandix"
+        git config --global user.email "co.domhnaill@aeshna.net"
         git add ./build_version.json 
         git commit -m "Automated build: update library binaries"
         git push
