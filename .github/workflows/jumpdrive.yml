@@ -23,7 +23,10 @@ jobs:
           "version": "1.0.${{ github.run_number }}",
           "commit": "${{ github.sha }}",
           "build_time": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-        }' > .build_version.json
+        }' > ./build_version.json
+        git add ./build_version.json 
+        git commit -m "Automated build: update library binaries"
+        git push
         
     - name:  Commit and Push
       run: |
