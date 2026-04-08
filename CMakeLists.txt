@@ -29,7 +29,5 @@ set_target_properties(Jumpdrive PROPERTIES
 
 # Specify include directories for the library target
 # The 'PUBLIC' keyword means both the library itself and consumers of the library need this include path
-target_include_directories(Jumpdrive PUBLIC 
-    ${CMAKE_CURRENT_SOURCE_DIR}
-)
+target_include_directories(Jumpdrive PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/inc")
 
