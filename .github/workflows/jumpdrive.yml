@@ -17,6 +17,14 @@ jobs:
       run: |
         cmake -B ${{github.workspace}}
         cmake --build ${{github.workspace}}
+    - name: Create version.json
+      run: |
+        echo '{
+          "version": "1.0.${{ github.run_number }}",
+          "commit": "${{ github.sha }}",
+          "build_time": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+        }' > .build_version.json
+        
     - name:  Commit and Push
       run: |
         git config --global user.name "github-actions[bot]"
