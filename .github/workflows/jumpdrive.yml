@@ -22,7 +22,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         mkdir -p bin/
-        cp build/*.a bin/ || cp build/*.so bin/ || cp build/Release/*.lib bin/
+        cp ${{github.workspace}}/*.a bin/ || cp ${{github.workspace}}/*.so bin/ || cp ${{github.workspace}}/Release/*.lib bin/
         git add bin/
         git commit -m "Automated build: update library binaries"
         git push
