@@ -1,0 +1,5 @@
+{
+  "version": "1.0.39",
+  "commit": "dba35fcab5b5b5eb01f91d3524bb75cf3e9ce84b",
+  "build_time": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}
